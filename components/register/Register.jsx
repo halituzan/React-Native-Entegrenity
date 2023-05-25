@@ -255,7 +255,7 @@ export default function Register({ navigation }) {
               </TouchableHighlight>
               <TouchableHighlight className="flex justify-center items-center w-full">
                 <Text
-                  onPress={() => navigation.navigate("Home", { home: "home" })}
+                  onPress={() => navigation.navigate("Login")}
                   className="text-white text-md bg-orange-600 py-2 px-6 rounded-xl mx-1 flex justify-center items-center  text-center"
                 >
                   Giriş Yap
