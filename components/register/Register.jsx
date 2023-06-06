@@ -12,7 +12,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { TouchableHighlight } from "react-native-gesture-handler";
+import { ScrollView, TouchableHighlight } from "react-native-gesture-handler";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Svg, Path, G } from "react-native-svg";
 
@@ -74,47 +75,46 @@ export default function Register({ navigation }) {
     };
   }, []);
   return (
-    <View style={styles.backgroundContainer}>
+    <SafeAreaView style={styles.backgroundContainer}>
       <Animated.View
         className="flex-1 flex items-center justify-center bg-slate-800 pt-2"
         style={[{ transform: [{ translateX: pan.x }] }]}
         {...panResponder.panHandlers}
       >
-        <SafeAreaView className="flex h-screen flex-col items-center justify-start bg-slate-800 pt-10">
-          {hideLogo ? (
-            <View className="w-64 h-16">
-              <Svg
-                version="1.1"
-                x="0px"
-                y="0px"
-                viewBox="0 0 4934.8 1241.4"
-                className="text-3xl font-bold sm:text-4xl"
-              >
-                <Path
-                  style={styles.pth_1}
-                  className="fill-[#EA580C]"
-                  d="M468.2,386.2c32.9,32.9,81.2,40.8,121.6,23.9c-9.4-20.7-14-42.4-14-65.3c0-35.5,9.7-70.4,29.2-104.6
+        <View className="flex h-screen flex-col items-center justify-start bg-slate-800 mt-10 ">
+          <View className="w-64 h-16">
+            <Svg
+              version="1.1"
+              x="0px"
+              y="0px"
+              viewBox="0 0 4934.8 1241.4"
+              className="text-3xl font-bold sm:text-4xl absolute top-0"
+            >
+              <Path
+                style={styles.pth_1}
+                className="fill-[#EA580C]"
+                d="M468.2,386.2c32.9,32.9,81.2,40.8,121.6,23.9c-9.4-20.7-14-42.4-14-65.3c0-35.5,9.7-70.4,29.2-104.6
       c19.5-34.2,46.5-62,81-83.5c5.1-3.2,10.2-6.1,15.4-8.8l-76-76c-43.4-43.4-113.8-43.4-157.1,0l-78.6,78.6
       c-43.4,43.4-43.4,113.8,0,157.1L468.2,386.2z"
-                />
-                <Path
-                  style={styles.pth_2}
-                  className="fill-[#EA580C]"
-                  d="M496.3,862.6c-31.8-34.2-47.7-77.2-47.7-129.2c0-4.6,0.1-9.1,0.4-13.7l-59.3,59.3
+              />
+              <Path
+                style={styles.pth_2}
+                className="fill-[#EA580C]"
+                d="M496.3,862.6c-31.8-34.2-47.7-77.2-47.7-129.2c0-4.6,0.1-9.1,0.4-13.7l-59.3,59.3
       c-43.4,43.4-43.4,113.8,0,157.1l78.6,78.6c43.4,43.4,113.8,43.4,157.1,0l78.6-78.6c10.4-10.4,18.3-22.4,23.7-35.2
       c-29.2,8.5-59.4,12.8-90.4,12.8C575.1,913.8,528.1,896.7,496.3,862.6z"
-                />
-                <Path
-                  style={styles.pth_3}
-                  className="fill-[#EA580C]"
-                  d="M389.7,464.8l-78.6-78.6c-43.4-43.4-113.8-43.4-157.1,0l-78.6,78.6C32,508.2,32,578.5,75.4,621.9l78.6,78.6
+              />
+              <Path
+                style={styles.pth_3}
+                className="fill-[#EA580C]"
+                d="M389.7,464.8l-78.6-78.6c-43.4-43.4-113.8-43.4-157.1,0l-78.6,78.6C32,508.2,32,578.5,75.4,621.9l78.6,78.6
       c43.4,43.4,113.8,43.4,157.1,0l78.6-78.6C433.1,578.5,433.1,508.2,389.7,464.8z"
-                />
-                <G>
-                  <Path
-                    style={styles.pth_4}
-                    className="fill-white"
-                    d="M2941.1,404.2c-12.3-14.6-29-21.9-50.3-21.9c-21.2,0-41,5.3-59.2,15.9c-18.3,10.6-38.7,25.9-61.2,45.8
+              />
+              <G>
+                <Path
+                  style={styles.pth_4}
+                  className="fill-white"
+                  d="M2941.1,404.2c-12.3-14.6-29-21.9-50.3-21.9c-21.2,0-41,5.3-59.2,15.9c-18.3,10.6-38.7,25.9-61.2,45.8
           l12.9-61.7H2640l-67.9,320.1c-13.2,41.5-29.4,72.9-48.6,94c-19.3,21.2-44.8,37.2-76.6,47.8l98.5-461.8h-143.3l-10.9,51.8v-6
           c0-15.3-6.6-27.5-19.9-36.8c-13.3-9.3-33.5-13.9-60.7-13.9c-53.7,0-100,18.8-138.9,56.2c-38.8,37.5-68,83.3-87.6,137.4
           c-18.2,50.4-28,98.6-29.2,144.7c-25.6,27-49.4,47.6-71.3,61.8c-25.6,16.6-56.2,24.9-92.1,24.9c-25.2,0-43.5-5.8-54.7-17.4
@@ -150,19 +150,19 @@ export default function Register({ navigation }) {
           c0-32.5,32.5-60.7,97.5-84.6L2278.7,962.6z M2331.5,711.8c-6,23.9-16.9,42.8-32.8,56.7c-15.9,13.9-31.5,20.9-46.8,20.9
           c-13.9,0-25.7-4.6-35.3-13.9c-9.6-9.3-14.4-30.5-14.4-63.7c0-33.2,6-71.5,17.9-115c11.9-43.5,28.5-80.6,49.8-111.5
           c21.2-30.9,45.1-46.3,71.7-46.3c13.9,0,24.2,4.2,30.9,12.4c6.6,8.3,10,16.4,10,24.4L2331.5,711.8z"
-                  />
-                  <G>
-                    <Path
-                      style={styles.pth_4}
-                      className="fill-white"
-                      d="M4014.8,328.6c21.9,0,40.6-7.6,56.2-22.9c15.6-15.3,23.4-33.8,23.4-55.7s-7.8-40.6-23.4-56.2
+                />
+                <G>
+                  <Path
+                    style={styles.pth_4}
+                    className="fill-white"
+                    d="M4014.8,328.6c21.9,0,40.6-7.6,56.2-22.9c15.6-15.3,23.4-33.8,23.4-55.7s-7.8-40.6-23.4-56.2
               c-15.6-15.6-34.3-23.4-56.2-23.4c-21.9,0-40.5,7.8-55.7,23.4c-15.3,15.6-22.9,34.3-22.9,56.2s7.6,40.5,22.9,55.7
               C3974.3,321,3992.9,328.6,4014.8,328.6z"
-                    />
-                    <Path
-                      style={styles.pth_4}
-                      className="fill-white"
-                      d="M4693.6,382.3L4626,701.8c-8,27.2-18.6,48.6-31.9,64.2c-13.3,15.6-29.2,23.4-47.8,23.4
+                  />
+                  <Path
+                    style={styles.pth_4}
+                    className="fill-white"
+                    d="M4693.6,382.3L4626,701.8c-8,27.2-18.6,48.6-31.9,64.2c-13.3,15.6-29.2,23.4-47.8,23.4
               c-19.9,0-29.9-14.6-29.9-43.8c0-8.6,1-16.9,3-24.9l71.7-338.4h-143.3l-67.7,319.5c0,0,0,0,0,0c-7.3,25.9-19.3,46.9-35.8,63.2
               c-16.6,16.3-34.5,24.4-53.7,24.4c-14.6,0-25.1-2.8-31.4-8.5c-6.3-5.6-9.5-15.1-9.5-28.4c0-11.3,1.3-21.9,4-31.9l63.7-298.6h59.7
               l8-39.8h-59.7l33.8-157.3L4211.9,245L4182,382.3h-32.8l-8,39.8h32.8l-59.7,279.7c0,0,0,0,0,0c-7.3,25.9-19.3,46.9-35.8,63.2
@@ -186,16 +186,13 @@ export default function Register({ navigation }) {
               c-22.2,15.9-45.6,24.6-70.2,25.9C3118,578.1,3134.5,530.6,3157.3,488.8z M4571.2,962.6c-6,27.2-14.3,46.9-24.9,59.2
               c-10.6,12.3-21.9,18.4-33.8,18.4c-10.6,0-19.9-3.5-27.9-10.5s-11.9-14.4-11.9-22.4c0-25.2,9.6-45.8,28.9-61.7
               c19.2-15.9,46.4-29.9,81.6-41.8L4571.2,962.6z"
-                    />
-                  </G>
+                  />
                 </G>
-              </Svg>
-            </View>
-          ) : (
-            ""
-          )}
+              </G>
+            </Svg>
+          </View>
 
-          <View className="bg-slate-800 w-screen flex justify-center items-center ">
+          <View className="bg-slate-800 w-screen flex justify-center items-center mt-10">
             <Text className="text-white text-2xl font-bold mt-5">Kaydol</Text>
             <Text className="text-white text-md font-medium my-5">
               Kayıt Olmak İçin Aşağıdaki Bilgileri Doldurun.
@@ -262,21 +259,11 @@ export default function Register({ navigation }) {
                 </Text>
               </TouchableHighlight>
             </View>
-            <View className="w-full mt-2 flex flex-row justify-center items-center">
-              <TouchableHighlight className="flex flex-row justify-center items-center w-full">
-                <Text
-                  onPress={() => navigation.navigate("Home", { home: "home" })}
-                  className="text-white text-md bg-orange-600 py-2 w-2/3 px-6 rounded-xl text-center"
-                >
-                  Ana Sayfa
-                </Text>
-              </TouchableHighlight>
-            </View>
           </View>
-        </SafeAreaView>
-        <StatusBar style="auto" />
+        </View>
       </Animated.View>
-    </View>
+      <StatusBar style="light" />
+    </SafeAreaView>
   );
 }
 

@@ -7,6 +7,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import DashboardNavbar from "./DashboardNavbar";
+import {
+  NavigationContainer,
+  useNavigationContainerRef,
+} from "@react-navigation/native";
+import TabMenu from "../tabs/TabMenu";
+
 export default function Dashboard() {
   const [sections, setSections] = useState([
     {
@@ -69,15 +75,14 @@ export default function Dashboard() {
     },
   ]);
 
-
   return (
-    <SafeAreaView className="flex-1 items-center justify-start bg-slate-800 ">
-      <View className="flex flex-col justify-between content-between items-center w-full ">
-        <View className="w-full z-50">
+    <SafeAreaView className="flex-1 items-center justify-start bg-slate-800 relative">
+      <View className="flex flex-col justify-between content-between items-center w-full h-screen">
+        {/* <View className="w-full z-50">
           <DashboardNavbar />
-        </View>
+        </View> */}
         <View
-          className="w-full p-5 pl-0"
+          className="w-full p-5"
           // style={styles.scrollView}
           // showsVerticalScrollIndicator={false}
         >
@@ -102,6 +107,7 @@ export default function Dashboard() {
           </View>
         </View>
       </View>
+      <TabMenu />
       <StatusBar style="auto" backgroundColor="#475569" />
     </SafeAreaView>
   );

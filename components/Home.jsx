@@ -10,6 +10,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { checkUser } from "../crudhelpers/auth.controller";
 import LoadingScreen from "./LoadingScreen";
 import { useNavigation } from "@react-navigation/native";
+import LoginScreen2 from "./login/LoginScreen2";
 
 export default function Home() {
   const navigation = useNavigation();
@@ -174,34 +175,34 @@ export default function Home() {
                 description="Ürün gruplarınıza alış fiyatları girerek her satışınızdan ne kadar kar ettiğinizi otomatik olarak öğrenin. Aylık karınızı net olarak analiz edin."
               />
             </TouchableHighlight>
-            <Login />
+            <LoginScreen2 />
           </ScrollView>
           {pagination === 1 ? (
             <View className="flex flex-row my-6">
               <View className="w-6 h-2 mx-1 rounded-xl bg-orange-600"></View>
-              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600"></View>
-              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600"></View>
-              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600"></View>
+              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600/50"></View>
+              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600/50"></View>
+              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600/50"></View>
             </View>
           ) : pagination === 2 ? (
             <View className="flex flex-row my-6">
-              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600"></View>
+              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600/50"></View>
               <View className="w-6 h-2 mx-1 rounded-xl bg-orange-600"></View>
-              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600"></View>
-              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600"></View>
+              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600/50"></View>
+              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600/50"></View>
             </View>
           ) : pagination === 3 ? (
             <View className="flex flex-row my-6">
-              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600"></View>
-              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600"></View>
+              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600/50"></View>
+              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600/50"></View>
               <View className="w-6 h-2 mx-1 rounded-xl bg-orange-600"></View>
-              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600"></View>
+              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600/50"></View>
             </View>
           ) : (
             <View className="flex flex-row my-6">
-              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600"></View>
-              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600"></View>
-              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600"></View>
+              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600/50"></View>
+              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600/50"></View>
+              <View className="w-2 h-2 mx-1 rounded-xl bg-orange-600/50"></View>
               <View className="w-6 h-2 mx-1 rounded-xl bg-orange-600"></View>
             </View>
           )}
